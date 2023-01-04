@@ -21,3 +21,20 @@ const usersList = [
         createdDate: '2000-01-01',
     }
 ];
+
+const createUserUseCase = (name, email, password) => {
+    const createdDate = new Date().toISOString().substring(0, 10);
+    const user = {
+        id: usersList.length + 1,
+        name,
+        email,
+        password,
+        createdDate
+    };
+
+    usersList.push(user);
+
+    return user;
+};
+
+export { usersList, createUserUseCase };
