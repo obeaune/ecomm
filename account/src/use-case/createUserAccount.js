@@ -5,6 +5,15 @@ const usersList = [
         email: 'grassSword17@ooo.com',
         password: 'huntressWizardS2',
         createdDate: '2022-01-14',
+        address: {
+            street: 'Forest',
+            number: 1,
+            complement: 'Tree house',
+            district: 'Candy',
+            CEP: '22222-222',
+            city: 'Ooo',
+            state: 'AM'
+        }
     },
     {
         id: 2,
@@ -12,6 +21,15 @@ const usersList = [
         email: 'myBestFriendIsAHuman@ooo.com',
         password: 'onionCheeseLobsterSoul99',
         createdDate: '2022-11-11',
+        address: {
+            street: 'Forest',
+            number: 1,
+            complement: 'Tree house',
+            district: 'Candy',
+            CEP: '22222-222',
+            city: 'Ooo',
+            state: 'AM'
+        }
     },
     {
         id: 3,
@@ -19,6 +37,15 @@ const usersList = [
         email: 'bloodAndGuitars@ooo.com',
         password: 'bonnie0and0me',
         createdDate: '2000-01-01',
+        address: {
+            street: 'Cave',
+            number: 666,
+            complement: 'Swamp',
+            district: '???',
+            CEP: '66666-666',
+            city: 'Ooo',
+            state: 'PE'
+        }
     }
 ];
 
