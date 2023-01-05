@@ -11,6 +11,3 @@ const searchUserAccountByEmailUseCase = (email) => {
 };
 
 export default searchUserAccountByEmailUseCase;
-
-// !user ? "Sorry, we didn't find your registration" : `Yey, user -${user.name}- found!`
-// Sorry, we couldn't find the user that matches this email address
