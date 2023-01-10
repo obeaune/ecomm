@@ -1,0 +1,1 @@
+db.categories.find({ "STATUS": "ATIVA" }, { _id: 0 })
