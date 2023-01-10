@@ -1,6 +1,6 @@
 FROM node:18-alpine
 
-WORKDIR /app-ecomm/product
+WORKDIR /app-ecomm/account
 
 COPY . .
 
