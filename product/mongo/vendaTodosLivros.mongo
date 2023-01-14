@@ -1,0 +1,1 @@
+db.products.updateMany({ "categoria.nome": "LIVROS" }, { $set: { quantidadeEmEstoque: 0 } });
