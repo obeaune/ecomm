@@ -1,0 +1,1 @@
+db.categories.find({ status: "ativa" }, { _id: 0 });
