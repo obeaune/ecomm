@@ -1,0 +1,68 @@
+db.users.insertMany([
+    {
+        name: "Finn Mertens",
+        email: "grassSword17@ooo.com",
+        password: "$2y$10$m06YqT0MuDJFpIc.LOSE9OQyf.TaJGAi08i56xOIix28j.IxjvufW",
+        createdDate: new ISODate(),
+        CPF: "167.006.352-68",
+        cellphone: "(97) 92474-6489",
+        address: [
+            {
+                street: "Forest",
+                number: 1,
+                complement: "Tree house",
+                district: "Candy Kingdom",
+                CEP: "22222-222",
+                city: "Land of Ooo",
+                state: "AM"
+            }
+        ]
+    },
+    {
+        name: "Jake, Sr.",
+        email: "myBestFriendIsAHuman@ooo.com",
+        password: "$2y$10$HdVmPsEZzR4ZpwDpmv2TpOflYS/fND2dL3r/Skk/mwz04snRASxHu",
+        createdDate: new ISODate(),
+        CPF: "582.717.842-00",
+        cellphone: "(97) 93487-9373",
+        address: [
+            {
+                street: "Forest",
+                number: 1,
+                complement: "Tree house",
+                district: "Candy Kingdom",
+                CEP: "22222-222",
+                city: "Land of Ooo",
+                state: "AM"
+            }
+        ]
+    },
+    {
+        name: "Marceline Abadeer",
+        email: "bloodAndGuitars@ooo.com",
+        password: "$2y$10$MEofmUHQn5LHdBICuuu13Ou4HqwsZRs4foaTFZB/DrAV6MsENRugi",
+        createdDate: new ISODate(),
+        CPF: "843.002.662-20",
+        cellphone: "(92) 92366-6885",
+        address: [
+            {
+                street: "Cave",
+                number: 333,
+                complement: "Swamp",
+                district: "Lagoon",
+                CEP: "33333-333",
+                city: "Land of Ooo",
+                state: "AM"
+            },
+            {
+                street: "Dominus vobiscum",
+                number: 666,
+                complement: "Draw a happy face",
+                district: "Nightosphere",
+                CEP: "66666-666",
+                city: "Underworld",
+                state: "AM"
+            }
+        ]
+    }
+]);
