@@ -1,0 +1,10 @@
+db.products.findOneAndUpdate(
+    {
+        // instead of following 'Make sure the quantity in stock is greater than zero.' I choose make sure
+        // the quantity in stock is greater or equal than the purchase (which would logically be greater than zero).
+        nomeProduto: "Galaxy Tab S8", quantidadeEmEstoque: { $gte: 2 }
+    },
+    {
+        $inc: { quantidadeEmEstoque: -2 }
+    }
+);
