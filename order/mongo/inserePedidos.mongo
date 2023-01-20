@@ -4,8 +4,8 @@ db.orders.insertMany([
         customer: "Marceline Abadeer",
         deliveryAddress: {
             street: "Cave",
-            number: 333,
-            complement: "Swamp",
+            number: "S/N",
+            complement: "S/N",
             district: "Lagoon",
             CEP: "33333-333",
             city: "Land of Ooo",
