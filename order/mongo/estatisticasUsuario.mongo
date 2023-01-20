@@ -2,9 +2,8 @@ db.orders.aggregate([
     {   $match: { customer: "Jake, Sr." }   },
     {   $unwind: "$items"   },
     {
-        $project: {
-            _id: 0,
-            nameClient: "$customer",
+        $group: {
+            _id: "$customer",
             quantityItems: {  $sum: "$items.quantity" },
             amount: {
                 $sum: { $multiply: [ "$items.unitPrice", "$items.quantity" ] }
