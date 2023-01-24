@@ -5,7 +5,7 @@ const findUser = usersList.find(el => el.email === 'grassSword17@ooo.com');
 console.log('########### Test1 - Search an existent user/email ###########\n')
 console.log(findUser)
 
-const addAddress = addUserAddressUseCase('grassSword17@ooo.com', 'Forest', 1, 'Tree house', 'Candy', '22222-222', 'Ooo', 'AM');
+const addAddress = addUserAddressUseCase('grassSword17@ooo.com', 'Forest', 2, 'Tree house - Second floor', 'Candy Kingdom', '22222-222', 'Land of Ooo', 'AM');
 console.log('\n\n\n################# Test2 - Add address #################\n')
 console.log(addAddress)
 

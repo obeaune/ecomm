@@ -1,11 +1,16 @@
-import { usersList } from './createUserAccount.js';
+import { usersList } from "./createUserAccount.js";
 
 const filterUserByAddressUseCase = (state) => {
-    const users = usersList.filter((obj) => obj.address.state === state);
-    if (users.length === 0) {
+    let usersInState = [];
+    for (let i = 0; i < usersList.length; i++) {
+        const user = usersList[i].address.filter((address) => address.state === state);
+        user.forEach(obj => usersInState.push(obj));
+    }
+
+    if (usersInState.length === 0) {
         return false
     } else {
-        return users
+        return usersInState
     }
 };
 

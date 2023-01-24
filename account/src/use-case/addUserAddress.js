@@ -7,7 +7,7 @@ const addUserAddressUseCase = (email, street, number, complement, district, CEP,
     if (!userObject) {
         return false
     } else {
-        userObject.address = {
+        const newAddress = {
             street,
             number,
             complement,
@@ -16,7 +16,8 @@ const addUserAddressUseCase = (email, street, number, complement, district, CEP,
             city,
             state
         };
-        usersList.splice(indexUser, 1, userObject);
+        usersList[indexUser].address.push(newAddress);
+        console.log(usersList[indexUser]);
         return true;
     }
 };
