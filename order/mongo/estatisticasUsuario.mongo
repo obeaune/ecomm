@@ -1,0 +1,14 @@
+db.orders.aggregate([
+    {   $match: { customer: "Jake, Sr." }   },
+    {   $unwind: "$items"   },
+    {
+        $group: {
+            _id: "$customer",
+            quantityItems: {  $sum: "$items.quantity" },
+            amount: {
+                $sum: { $multiply: [ "$items.unitPrice", "$items.quantity" ] }
+            },
+            discount: { $sum: "$items.discount" }
+        }
+    }
+]);

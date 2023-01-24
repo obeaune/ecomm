@@ -1,0 +1,50 @@
+db.orders.insertMany([
+    {
+        createdDate: new ISODate(),
+        customer: "Marceline Abadeer",
+        deliveryAddress: {
+            street: "Cave",
+            number: "S/N",
+            complement: "S/N",
+            district: "Lagoon",
+            CEP: "33333-333",
+            city: "Land of Ooo",
+            state: "AM"
+        },
+        items: [
+            {
+                product: 'Demonic Wishing Eye',
+                quantity: 1,
+                discount: NumberDecimal("6.60"),
+                unitPrice: NumberDecimal("60606.60")
+            }
+        ]
+    },
+    {
+        createdDate: new ISODate(),
+        customer: "Jake, Sr.",
+        deliveryAddress: {
+            street: "Forest",
+            number: 1,
+            complement: "Tree house",
+            district: "Candy Kingdom",
+            CEP: "22222-222",
+            city: "Land of Ooo",
+            state: "AM"
+        },
+        items: [
+            {
+                product: "Finn Cake - Cupcake",
+                quantity: 6,
+                discount: NumberDecimal("7.00"),
+                unitPrice: NumberDecimal("9.50")
+            },
+            {
+                product: "Apple pie",
+                quantity: 1,
+                discount: NumberDecimal("4.00"),
+                unitPrice: NumberDecimal("35.00")
+            }
+        ]
+    }
+]);
