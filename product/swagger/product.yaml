@@ -1,0 +1,50 @@
+openapi: 3.0.3
+info:
+  title: Swagger Ecomm - OpenAPI 3.0
+  description: >-
+    Test project where a fictitious documentation for PagoNxt and Alura training will be created.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Ana C. A. Ferreira
+    url: https://github.com/obeaune
+  license:
+    name: "License: GPLv3"
+    url: https://www.gnu.org/licenses/gpl-3.0.html
+  version: 0.0.1
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://mockapi.io
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        status:
+          type: string
+          enum: [Active, Inactive]
+    Categories:
+      type: array
+      items:
+        $ref: "#/components/schemas/Category"
+paths:
+  /api/categories:
+    get:
+      summary: Retrieve all categories
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Categories"
+        204:
+          description: No Content
+          content:
+            application/json:
+              example: No Content Added Yet
