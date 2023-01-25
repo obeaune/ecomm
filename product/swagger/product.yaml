@@ -32,14 +32,52 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Category"
-    ModifyCategory:
+    NewCategory:
       type: object
       properties:
         name:
           type: string
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        slug:
+          type: string
+        price:
+          type: number
+        quantity:
+          type: integer
+        categoryId:
+          type: integer
+    Products:
+      type: array
+      items:
+        $ref: "#/components/schemas/Product"
+    NewProduct:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        slug:
+          type: string
+        price:
+          type: number
+        quantity:
+          type: integer
+        categoryId:
+          type: integer
 tags:
   - name: Categories
-    description: Everything about available categories
+    description: Everything about categories
+  - name: Products
+    description: Everything about products
 paths:
   /api/categories:
     get:
@@ -66,13 +104,13 @@ paths:
   /api/admin/categories:
     post:
       tags:
-      - Categories
+      - Categories 
       summary: Adds a new category
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ModifyCategory"
+              $ref: "#/components/schemas/NewCategory"
       responses:
         201:
           description: Created
@@ -99,7 +137,7 @@ paths:
       required: true
     get:
       tags:
-      - Categories
+      - Categories 
       summary: Detail of a category
       responses:
         200:
@@ -127,7 +165,7 @@ paths:
       required: true
     put:
       tags:
-      - Categories
+      - Categories 
       summary: Modify a category
       requestBody:
         content:
@@ -158,7 +196,7 @@ paths:
               example: Internal Server Error
     delete:
       tags:
-      - Categories
+      - Categories 
       summary: Delete a category
       responses:
         200:
@@ -184,7 +222,7 @@ paths:
     patch:
       tags:
       - Categories
-      summary: Modify the status of a category
+      summary: Modify a field of a category
       responses:
         200:
           description: Successful update attempt
@@ -202,6 +240,167 @@ paths:
           content:
             application/json:
               example: Category Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+  /api/products:
+    get:
+      tags:
+      - Products
+      summary: Retrieve all products
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Products"
+        204:
+          description: No Content
+          content:
+            application/json:
+              example: No Content Added Yet
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+  /api/admin/products:
+    post:
+      tags:
+      - Products
+      summary: Adds a new product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewProduct"
+      responses:
+        201:
+          description: Created
+          content:
+            applicantion/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+  /api/products/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    get:
+      tags:
+      - Products
+      summary: Detail of a product
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Category Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+  /api/admin/products/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    put:
+      tags:
+      - Products
+      summary: Modify a product
+      responses:
+        200:
+          description: Successful change attempt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Category Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+    delete:
+      tags:
+      - Products
+      summary: Delete a product
+      responses:
+        200:
+          description: Successful delete attempt
+          content:
+            application/json:
+              example: Product deleted successfully
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Category Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+    patch:
+      tags:
+      - Products
+      summary: Modify a field of a product
+      responses:
+        200:
+          description: Successful update attempt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Product Not Found
         500:
           description: Internal Server Error
           content:
