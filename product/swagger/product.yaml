@@ -83,3 +83,29 @@ paths:
           content:
             application/json:
               example: Internal Server Error
+  /api/categories/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    get:
+      summary: Detail of a category
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Category Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
