@@ -1,0 +1,245 @@
+openapi: 3.0.3
+info:
+  title: Ecomm (Users) - OpenAPI 3.0
+  description: >-
+    Test project where a fictitious documentation for PagoNxt and Alura training will be created.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Ana C. A. Ferreira
+    url: https://github.com/obeaune
+  license:
+    name: "License: GPLv3"
+    url: https://www.gnu.org/licenses/gpl-3.0.html
+  version: 0.0.1
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://mockapi.io
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+          format: password
+        CPF:
+          type: string
+        cellphone:
+          type: string
+        street:
+          type: string
+        numberAddress:
+          type: number
+        complementAddress:
+          type: string
+        CEP:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        createdAt:
+          type: string
+          format: date
+    Users:
+      type: array
+      items:
+        $ref: "#/components/schemas/User"
+    NewUser:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        CPF:
+          type: string
+        cellphone:
+          type: string
+        street:
+          type: string
+        numberAddress:
+          type: number
+        complementAddress:
+          type: string
+        CEP:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+tags:
+  - name: Users
+    description: Information about our users
+paths:
+  /api/users:
+    get:
+      tags:
+      - Users
+      summary: Retrieve all users
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Users"
+        204:
+          description: No Content
+          content:
+            application/json:
+              example: No Content Added Yet
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+  /api/users/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    get:
+      tags:
+      - Users
+      summary: Detail of a specific user
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Category Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+  /api/admin/users:
+    post:
+      tags:
+      - Users
+      summary: Adds a new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewUser"
+      responses:
+        201:
+          description: Created
+          content:
+            applicantion/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+  /api/admin/users/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    patch:
+      tags:
+      - Users
+      summary: Modify a field of a user
+      responses:
+        200:
+          description: Successful update attempt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: User Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+    put:
+      tags:
+      - Users
+      summary: Modify a user
+      responses:
+        200:
+          description: Successful change attempt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: User Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+    delete:
+      tags:
+      - Users
+      summary: Delete a user
+      responses:
+        200:
+          description: Successful delete attempt
+          content:
+            application/json:
+              example: User deleted successfully
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: User Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
