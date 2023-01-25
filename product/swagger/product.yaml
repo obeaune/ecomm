@@ -32,6 +32,11 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Category"
+    NewCategory:
+      type: object
+      properties:
+        name:
+          type: string
 paths:
   /api/categories:
     get:
@@ -48,3 +53,33 @@ paths:
           content:
             application/json:
               example: No Content Added Yet
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+  /api/admin/categories:
+    post:
+      summary: Adds a new category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewCategory"
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
