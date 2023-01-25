@@ -32,7 +32,7 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Category"
-    NewCategory:
+    ModifyCategory:
       type: object
       properties:
         name:
@@ -65,7 +65,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/NewCategory"
+              $ref: "#/components/schemas/ModifyCategory"
       responses:
         201:
           description: Created
@@ -99,6 +99,89 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Category"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Category Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+  /api/admin/categories/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    put:
+      summary: Modify a category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ModifyCategory"
+      responses:
+        200:
+          description: Successful change attempt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Category Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+    delete:
+      summary: Delete a category
+      responses:
+        200:
+          description: Successful delete attempt
+          content:
+            application/json:
+              example: Category deleted successfully
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Category Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+    patch:
+      summary: Modify the status of a category
+      responses:
+        200:
+          description: Successful update attempt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
         404:
           description: Not Found
           content:
