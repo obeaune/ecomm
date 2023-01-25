@@ -37,9 +37,14 @@ components:
       properties:
         name:
           type: string
+tags:
+  - name: Categories
+    description: Everything about available categories
 paths:
   /api/categories:
     get:
+      tags:
+      - Categories
       summary: Retrieve all categories
       responses:
         200:
@@ -60,6 +65,8 @@ paths:
               example: Internal Server Error
   /api/admin/categories:
     post:
+      tags:
+      - Categories
       summary: Adds a new category
       requestBody:
         content:
@@ -91,6 +98,8 @@ paths:
         type: integer
       required: true
     get:
+      tags:
+      - Categories
       summary: Detail of a category
       responses:
         200:
@@ -117,6 +126,8 @@ paths:
         type: integer
       required: true
     put:
+      tags:
+      - Categories
       summary: Modify a category
       requestBody:
         content:
@@ -146,6 +157,8 @@ paths:
             application/json:
               example: Internal Server Error
     delete:
+      tags:
+      - Categories
       summary: Delete a category
       responses:
         200:
@@ -169,6 +182,8 @@ paths:
             application/json:
               example: Internal Server Error
     patch:
+      tags:
+      - Categories
       summary: Modify the status of a category
       responses:
         200:
