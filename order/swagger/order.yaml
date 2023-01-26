@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: Ecomm (Orders) - OpenAPI 3.0
+  description: >-
+    Test project where a fictitious documentation for PagoNxt and Alura training will be created.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Ana C. A. Ferreira
+    url: https://github.com/obeaune
+  license:
+    name: "License: GPLv3"
+    url: https://www.gnu.org/licenses/gpl-3.0.html
+  version: 0.0.1
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://mockapi.io
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+        clientId:
+          type: integer
+        streetDelivery:
+          type: string
+        cellphoneDelivery:
+          type: string
+        complementDelivery:
+          type: string
+        CEPDelivery:
+          type: string
+        cityDelivery:
+          type: string
+        stateDelivery:
+          type: string
+        orderItens:
+          type: array
+          items:
+            type: object
+            properties:
+              productId:
+                type: integer
+              quantity:
+                type: integer
+              discount:
+                type: number
+                format: double
+              unitPrice:
+                type: number
+                format: double
+        createdAt:
+          type: string
+          format: date
+    Orders:
+      type: array
+      items:
+        $ref: "#/components/schemas/Order"
+    NewOrder:
+      type: object
+      properties:
+        clientId:
+          type: integer
+        streetDelivery:
+          type: string
+        cellphoneDelivery:
+          type: string
+        complementDelivery:
+          type: string
+        CEPDelivery:
+          type: string
+        cityDelivery:
+          type: string
+        stateDelivery:
+          type: string
+        orderItens:
+          type: array
+          items:
+            type: object
+            properties:
+              productId:
+                type: integer
+              quantity:
+                type: integer
+              discount:
+                type: number
+                format: double
+              unitPrice:
+                type: number
+                format: double
+tags:
+  - name: Orders
+    description: Information about orders
+paths:
+  /api/orders:
+    get:
+      tags:
+      - Orders
+      summary: Retrieve all orders
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Orders"
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+  /api/orders/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    get:
+      tags:
+      - Orders
+      summary: Detail of a specific order
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Category Not Found
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
+  /api/admin/order:
+    post:
+      tags:
+      - Orders
+      summary: Adds a new order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewOrder"
+      responses:
+        201:
+          description: Created
+          content:
+            applicantion/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              example: You must authenticate itself to get the requested response
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              example: Internal Server Error
