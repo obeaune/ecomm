@@ -91,11 +91,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Categories"
-        204:
-          description: No Content
-          content:
-            application/json:
-              example: No Content Added Yet
         500:
           description: Internal Server Error
           content:
@@ -257,11 +252,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Products"
-        204:
-          description: No Content
-          content:
-            application/json:
-              example: No Content Added Yet
         500:
           description: Internal Server Error
           content:
