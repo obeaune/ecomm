@@ -16,6 +16,8 @@ externalDocs:
   url: http://swagger.io
 servers:
   - url: https://mockapi.io
+security: 
+- auth: []
 components:
   schemas:
     Category:
@@ -73,6 +75,11 @@ components:
           type: integer
         categoryId:
           type: integer
+  securitySchemes:
+    auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 tags:
   - name: Categories
     description: Everything about categories
@@ -91,11 +98,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Categories"
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/admin/categories:
     post:
       tags:
@@ -118,11 +120,6 @@ paths:
           content:
             application/json:
               example: You must authenticate itself to get the requested response
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/categories/{id}:
     parameters:
     - name: id
@@ -146,11 +143,6 @@ paths:
           content:
             application/json:
               example: Category Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/admin/categories/{id}:
     parameters:
     - name: id
@@ -166,7 +158,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ModifyCategory"
+              $ref: "#/components/schemas/NewCategory"
       responses:
         200:
           description: Successful change attempt
@@ -184,11 +176,6 @@ paths:
           content:
             application/json:
               example: Category Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
     delete:
       tags:
       - Categories 
@@ -209,11 +196,6 @@ paths:
           content:
             application/json:
               example: Category Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
     patch:
       tags:
       - Categories
@@ -235,11 +217,6 @@ paths:
           content:
             application/json:
               example: Category Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/products:
     get:
       tags:
@@ -252,11 +229,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Products"
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/admin/products:
     post:
       tags:
@@ -279,11 +251,6 @@ paths:
           content:
             application/json:
               example: You must authenticate itself to get the requested response
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/products/{id}:
     parameters:
     - name: id
@@ -307,11 +274,6 @@ paths:
           content:
             application/json:
               example: Category Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/admin/products/{id}:
     parameters:
     - name: id
@@ -340,11 +302,6 @@ paths:
           content:
             application/json:
               example: Category Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
     delete:
       tags:
       - Products
@@ -365,11 +322,6 @@ paths:
           content:
             application/json:
               example: Category Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
     patch:
       tags:
       - Products
@@ -391,8 +343,3 @@ paths:
           content:
             application/json:
               example: Product Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
