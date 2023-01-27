@@ -91,6 +91,8 @@ tags:
     description: Everything about categories
   - name: Products
     description: Everything about products
+  - name: Filters
+    description: Filters in the product list
 paths:
   /api/categories:
     get:
@@ -349,3 +351,85 @@ paths:
           content:
             application/json:
               example: Product Not Found
+  /api/products/price:
+    get:
+      tags:
+      - Filters
+      summary: Retrieve products by price range
+      parameters:
+        - name: range
+          in: query
+          schema:
+            type: object
+            properties:
+              minPrice: 
+                type: number
+                format: double
+              maxPrice:
+                type: number
+                format: double
+          required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"          
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Not Found
+  /api/products/category:
+    get:
+      tags:
+      - Filters
+      summary: Retrieve products by category
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"         
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Not Found
+  /api/products/stock:
+    get:
+      tags:
+      - Filters
+      summary: Retrieve products by stock value
+      parameters:
+        - name: stock
+          in: query
+          schema:
+            type: integer
+          required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"         
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Not Found
