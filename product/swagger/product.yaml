@@ -24,7 +24,8 @@ components:
       type: object
       properties:
         id:
-          type: integer
+          type: string
+          format: uuid
         name:
           type: string
         status:
@@ -43,7 +44,8 @@ components:
       type: object
       properties:
         id:
-          type: integer
+          type: string
+          format: uuid
         name:
           type: string
         description:
@@ -52,10 +54,12 @@ components:
           type: string
         price:
           type: number
+          format: double
         quantity:
           type: integer
         categoryId:
-          type: integer
+          type: string
+          format: uuid
     Products:
       type: array
       items:
@@ -71,10 +75,12 @@ components:
           type: string
         price:
           type: number
+          format: double
         quantity:
           type: integer
         categoryId:
-          type: integer
+          type: string
+          format: uuid
   securitySchemes:
     auth:
       type: http

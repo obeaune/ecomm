@@ -16,17 +16,21 @@ externalDocs:
   url: http://swagger.io
 servers:
   - url: https://mockapi.io
+security: 
+- auth: []
 components:
   schemas:
     User:
       type: object
       properties:
         id:
-          type: integer
+          type: string
+          format: uuid
         name:
           type: string
         email:
           type: string
+          format: email
         password:
           type: string
           format: password
@@ -60,8 +64,10 @@ components:
           type: string
         email:
           type: string
+          format: email
         password:
           type: string
+          format: password
         CPF:
           type: string
         cellphone:
@@ -78,6 +84,11 @@ components:
           type: string
         state:
           type: string
+  securitySchemes:
+    auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 tags:
   - name: Users
     description: Information about our users
@@ -87,6 +98,7 @@ paths:
       tags:
       - Users
       summary: Retrieve all users
+      security: []
       responses:
         200:
           description: Success
@@ -94,11 +106,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Users"
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/users/{id}:
     parameters:
     - name: id
@@ -110,6 +117,7 @@ paths:
       tags:
       - Users
       summary: Detail of a specific user
+      security: []
       responses:
         200:
           description: Success
@@ -122,11 +130,6 @@ paths:
           content:
             application/json:
               example: Category Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/admin/users:
     post:
       tags:
@@ -149,11 +152,6 @@ paths:
           content:
             application/json:
               example: You must authenticate itself to get the requested response
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/admin/users/{id}:
     parameters:
     - name: id
@@ -182,11 +180,6 @@ paths:
           content:
             application/json:
               example: User Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
     put:
       tags:
       - Users
@@ -208,11 +201,6 @@ paths:
           content:
             application/json:
               example: User Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
     delete:
       tags:
       - Users
@@ -233,8 +221,3 @@ paths:
           content:
             application/json:
               example: User Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error

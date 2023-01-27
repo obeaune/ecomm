@@ -16,15 +16,19 @@ externalDocs:
   url: http://swagger.io
 servers:
   - url: https://mockapi.io
+security: 
+- auth: []
 components:
   schemas:
     Order:
       type: object
       properties:
         id:
-          type: integer
+          type: string
+          format: uuid
         clientId:
-          type: integer
+          type: string
+          format: uuid
         streetDelivery:
           type: string
         cellphoneDelivery:
@@ -43,7 +47,8 @@ components:
             type: object
             properties:
               productId:
-                type: integer
+                type: string
+                format: uuid
               quantity:
                 type: integer
               discount:
@@ -63,7 +68,8 @@ components:
       type: object
       properties:
         clientId:
-          type: integer
+          type: string
+          format: uuid
         streetDelivery:
           type: string
         cellphoneDelivery:
@@ -82,7 +88,8 @@ components:
             type: object
             properties:
               productId:
-                type: integer
+                type: string
+                format: uuid
               quantity:
                 type: integer
               discount:
@@ -91,6 +98,11 @@ components:
               unitPrice:
                 type: number
                 format: double
+  securitySchemes:
+    auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 tags:
   - name: Orders
     description: Information about orders
@@ -100,6 +112,7 @@ paths:
       tags:
       - Orders
       summary: Retrieve all orders
+      security: []
       responses:
         200:
           description: Success
@@ -107,11 +120,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Orders"
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/orders/{id}:
     parameters:
     - name: id
@@ -123,6 +131,7 @@ paths:
       tags:
       - Orders
       summary: Detail of a specific order
+      security: []
       responses:
         200:
           description: Success
@@ -135,11 +144,6 @@ paths:
           content:
             application/json:
               example: Category Not Found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
   /api/admin/order:
     post:
       tags:
@@ -162,8 +166,3 @@ paths:
           content:
             application/json:
               example: You must authenticate itself to get the requested response
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              example: Internal Server Error
