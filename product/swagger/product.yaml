@@ -99,6 +99,7 @@ paths:
       tags:
       - Categories
       summary: Retrieve all categories
+      security: []
       responses:
         200:
           description: Success
@@ -106,6 +107,30 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Categories"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Not Found
+  /api/categories/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    get:
+      tags:
+      - Categories 
+      summary: Detail of a category
+      security: []
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
         404:
           description: Not Found
           content:
@@ -133,29 +158,6 @@ paths:
           content:
             application/json:
               example: You must authenticate itself to get the requested response
-  /api/categories/{id}:
-    parameters:
-    - name: id
-      in: path
-      schema:
-        type: integer
-      required: true
-    get:
-      tags:
-      - Categories 
-      summary: Detail of a category
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Category"
-        404:
-          description: Not Found
-          content:
-            application/json:
-              example: Category Not Found
   /api/admin/categories/{id}:
     parameters:
     - name: id
@@ -235,6 +237,7 @@ paths:
       tags:
       - Products
       summary: Retrieve all products
+      security: []
       responses:
         200:
           description: Success
@@ -242,6 +245,30 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Products"
+  /api/products/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    get:
+      tags:
+      - Products
+      summary: Detail of a product
+      security: []
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Not Found
   /api/admin/products:
     post:
       tags:
@@ -264,29 +291,6 @@ paths:
           content:
             application/json:
               example: You must authenticate itself to get the requested response
-  /api/products/{id}:
-    parameters:
-    - name: id
-      in: path
-      schema:
-        type: integer
-      required: true
-    get:
-      tags:
-      - Products
-      summary: Detail of a product
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Product"
-        404:
-          description: Not Found
-          content:
-            application/json:
-              example: Category Not Found
   /api/admin/products/{id}:
     parameters:
     - name: id
@@ -361,6 +365,7 @@ paths:
       tags:
       - Filters
       summary: Retrieve products by price range
+      security: []
       parameters:
         - name: range
           in: query
@@ -393,6 +398,7 @@ paths:
       tags:
       - Filters
       summary: Retrieve products by category
+      security: []
       parameters:
         - name: category
           in: query
@@ -418,6 +424,7 @@ paths:
       tags:
       - Filters
       summary: Retrieve products by stock value
+      security: []
       parameters:
         - name: stock
           in: query
