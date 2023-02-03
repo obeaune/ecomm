@@ -84,6 +84,21 @@ components:
           type: string
         state:
           type: string
+    BasicUser:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+    BasicUsers:
+      type: array
+      items:
+        $ref: "#/components/schemas/BasicUser"
   securitySchemes:
     auth:
       type: http
@@ -97,7 +112,7 @@ paths:
     get:
       tags:
       - Users
-      summary: Retrieve all users
+      summary: Retrieve basic details of users
       security: []
       responses:
         200:
@@ -105,7 +120,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Users"
+                $ref: "#/components/schemas/BasicUsers"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Not Found
   /api/users/{id}:
     parameters:
     - name: id
@@ -116,7 +136,7 @@ paths:
     get:
       tags:
       - Users
-      summary: Detail of a specific user
+      summary: Basic details of a specific user
       security: []
       responses:
         200:
@@ -124,12 +144,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
+                $ref: "#/components/schemas/BasicUser"
         404:
           description: Not Found
           content:
             application/json:
-              example: Category Not Found
+              example: User Not Found
   /api/admin/users:
     post:
       tags:
