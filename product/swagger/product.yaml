@@ -106,6 +106,11 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Categories"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Category Not Found
   /api/admin/categories:
     post:
       tags:
