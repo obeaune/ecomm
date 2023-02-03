@@ -107,48 +107,12 @@ tags:
   - name: Orders
     description: Information about orders
 paths:
-  /api/orders:
-    get:
-      tags:
-      - Orders
-      summary: Retrieve all orders
-      security: []
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Orders"
-  /api/orders/{id}:
-    parameters:
-    - name: id
-      in: path
-      schema:
-        type: integer
-      required: true
-    get:
-      tags:
-      - Orders
-      summary: Detail of a specific order
-      security: []
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Order"
-        404:
-          description: Not Found
-          content:
-            application/json:
-              example: Category Not Found
-  /api/admin/order:
+  /api/order:
     post:
       tags:
       - Orders
       summary: Adds a new order
+      security: []
       requestBody:
         content:
           application/json:
@@ -161,8 +125,43 @@ paths:
             applicantion/json:
               schema:
                 $ref: "#/components/schemas/Order"
-        401:
-          description: Unauthorized
+  /api/orders:
+    get:
+      tags:
+      - Orders
+      summary: Retrieve all orders
+      responses:
+        200:
+          description: Success
           content:
             application/json:
-              example: You must authenticate itself to get the requested response
+              schema:
+                $ref: "#/components/schemas/Orders"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Not Found
+  /api/orders/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    get:
+      tags:
+      - Orders
+      summary: Detail of a specific order
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        404:
+          description: Not Found
+          content:
+            application/json:
+              example: Order Not Found
