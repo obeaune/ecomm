@@ -6,19 +6,17 @@ const addressSchema = new mongoose.Schema({
     number: {type: String, required: true},
     complement: {type: String},
     district: {type: String},
-    CEP: {type: String, match: /^\d{8}$/},
+    CEP: {type: String},
     city: {type: String, required: true},
-    state: {type: String, required: true,
-        enum: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']
-    },
+    state: {type: String, required: true},
 });
 
 const accountSchema = new mongoose.Schema({
-    name: {type: String, required: true, match: /^[^\d.,][^.,]{3,}/},
+    name: {type: String, required: true},
     email: {type: String, required: true},
-    password: {type: String, match: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/},
-    cpf: {type: String, match: /^\d{11}$/},
-    cellphone:{type: String, match: /^\d{10,13}$/},
+    password: {type: String},
+    cpf: {type: String},
+    cellphone:{type: String},
     address: { type: addressSchema, required: true},
     createdDate: {type: Date},
 },
