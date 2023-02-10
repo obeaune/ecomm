@@ -13,8 +13,7 @@ const validateInfoAccount = (req, res, next) => {
     });
 
     const accountSchema = Joi.object().keys({
-        // _id: false,
-        _id: Joi.string(),
+        _id: Joi.string().hex().length(24),
         name: Joi.string().required(),
         email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "br"] } }).required(),
         password: Joi.string().min(9).pattern(new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{9,20}$/)).required(),
