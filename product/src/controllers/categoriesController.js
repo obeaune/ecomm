@@ -39,6 +39,17 @@ class categoriesController {
         })
     }
 
+    static updateStatusCategory = (req, res) => {
+        const { id } = req.params;
+        categories.findByIdAndUpdate(id, {$set: req.body}, {new: true}, (err, category) => {
+            if(err) {
+                res.status(500).send({ message: err.message });
+            } else {
+                res.status(200).send({ message: `Category -${category.id}- status successfully updated!`});
+            }
+        })
+    }
+
     static deleteCategory = (req, res) => {
         const { id } = req.params;
         categories.findByIdAndDelete(id, (err) => {

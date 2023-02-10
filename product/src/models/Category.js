@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const categorySchema = new mongoose.Schema({
-    name: {type: String, required: true, match: /^[^\d.,][^.,]{3,}/},
-    status: {type: String, required: true, enum: ["Active", "Inactive"]}
+    name: {type: String, required: true},
+    status: {type: String, required: true}
 },
 {
     versionKey: false
