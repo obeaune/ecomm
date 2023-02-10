@@ -15,11 +15,27 @@ services:
     # depends_on:
     #   - mongodb
   mongodb:
-    image: mongo
+    image: mongo:5.0
     container_name: mongo-ecomm
     restart: always
+    volumes:
+      - db-mongo-ecomm:/data/db
     ports:
       - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: secret
+  mysql:
+    image: mysql
+    container_name: mysql-ecomm
+    restart: always
+    volumes:
+      - db-mysql-ecomm:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+
+volumes:
+  db-mongo-ecomm:
+  db-mysql-ecomm:
