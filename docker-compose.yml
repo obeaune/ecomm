@@ -1,8 +1,25 @@
 version: '3.9'
 services:
-  product:
-    build: ./product
-    container_name: ecomm-product
   account:
     build: ./account
     container_name: ecomm-account
+    ports:
+      - 3001:3001
+    # depends_on:
+    #   - mongodb
+  product:
+    build: ./product
+    container_name: ecomm-product
+    ports:
+      - 3002:3002
+    # depends_on:
+    #   - mongodb
+  mongodb:
+    image: mongo
+    container_name: mongo-ecomm
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
