@@ -15,7 +15,7 @@ class PaymentController {
         const infoPayment = req.body;
         try {
             const { id, status } = await db.Payments.create(infoPayment);
-            return res.status(201).set("Location", `/payments/${id}`).json({ message: `Payment: ${id}. Status: ${status}`});
+            return res.status(201).location(`/payments/${id}`).json({ message: `Payment: ${id}. Status: ${status}`});
         } catch(err) {
             return res.status(500).json(err.message);
         }
