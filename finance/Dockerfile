@@ -8,6 +8,6 @@ RUN npm config set strict-ssl false
 
 RUN npm install
 
-EXPOSE 3306
+EXPOSE 3003
 
 ENTRYPOINT npm start
