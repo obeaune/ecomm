@@ -4,7 +4,7 @@ class PaymentController {
     static async getPayments(_req, res){
         try {
             const allPayments = await db.Payments.findAll();
-            return res.status(200).json(allPayments);
+            allPayments.length === 0 ? res.status(404).json() : res.status(200).json(allPayments);
         } catch (err) {
             return res.status(500).json(err.message);
         }
@@ -53,7 +53,7 @@ class PaymentController {
         const { id } = req.params;
         const { status } = req.body;
         try {
-            if(status === undefined) return res.status(400).json({ message: "You need to pass the new status in the request body."});
+            if(!status) return res.status(400).json({ message: "You need to pass the new status in the request body."});
             await db.Payments.update({ status }, { where: { id: +id } });
             return res.status(200).json({ message: `Status of payment -${id}- was successfully updated for -${status}-.` });
         } catch(err) {
