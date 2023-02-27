@@ -1,6 +1,6 @@
 import express from 'express';
-import categories from '../categoriesRoute.js';
-import products from '../productsRoute.js';
+import categories from '../routes/categoriesRoute.js';
+import products from '../routes/productsRoute.js';
 
 const routes = (app) => {
     app.use(

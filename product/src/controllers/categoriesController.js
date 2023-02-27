@@ -20,7 +20,7 @@ class categoriesController {
         const ObjCategory = new categories(req.body);
         ObjCategory.save((err) => {
             if (err) {
-                res.status(500).send({ message: err.message });
+                res.status(422).send({ message: err.message });
             } else {
                 res.status(201).json(ObjCategory);
             }
@@ -31,7 +31,7 @@ class categoriesController {
         const { id } = req.params;
         categories.findByIdAndUpdate(id, { $set: req.body }, { new: true }, (err, category) => {
             if (err) {
-                res.status(500).send({ message: err.message });
+                res.status(400).send({ message: err.message });
             } else {
                 res.status(200).send({ message: `Category -${category.id}- successfully updated!` });
             }
@@ -42,7 +42,7 @@ class categoriesController {
         const { id } = req.params;
         categories.findByIdAndUpdate(id, { $set: req.body }, { new: true }, (err, category) => {
             if (err) {
-                res.status(500).send({ message: err.message });
+                res.status(400).send({ message: err.message });
             } else {
                 res.status(200).send({ message: `Category -${category.id}- status successfully updated!` });
             }
@@ -53,9 +53,9 @@ class categoriesController {
         const { id } = req.params;
         categories.findByIdAndDelete(id, (err) => {
             if (err) {
-                res.status(500).send({ message: err.message });
+                res.status(400).send({ message: err.message });
             } else {
-                res.status(200).send({ message: 'Category successfully deleted.' });
+                res.status(204).send({ message: 'Category successfully deleted.' });
             }
         });
     };
