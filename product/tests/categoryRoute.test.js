@@ -35,6 +35,7 @@ describe('POST in /admin/categories', () => {
             .set('Accept', 'application/json')
             .expect('content-type', /json/)
             .expect(201);
+
         // eslint-disable-next-line no-underscore-dangle
         idResponse = response.body._id;
     });
