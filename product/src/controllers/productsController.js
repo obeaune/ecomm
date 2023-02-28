@@ -31,7 +31,7 @@ class productsController {
         const { id } = req.params;
         products.findByIdAndUpdate(id, { $set: req.body }, { new: true }, (err, product) => {
             if (err) {
-                res.status(500).send({ message: err.message });
+                res.status(400).send({ message: err.message });
             } else {
                 res.status(200).send({ message: `Product -${product.id}- successfully updated!` });
             }
@@ -42,9 +42,9 @@ class productsController {
         const { id } = req.params;
         products.findByIdAndDelete(id, (err) => {
             if (err) {
-                res.status(500).send({ message: err.message });
+                res.status(400).send({ message: err.message });
             } else {
-                res.status(200).send({ message: 'Product successfully deleted.' });
+                res.status(204).send({ message: 'Product successfully deleted.' });
             }
         });
     };
