@@ -9,7 +9,7 @@ class PaymentController {
             }
             return res.status(200).json(allPayments);
         } catch (err) {
-            return res.status(500).json(err.message);
+            return res.status(400).json(err.message);
         }
     }
 
@@ -38,7 +38,7 @@ class PaymentController {
             ];
             return res.status(201).location(`/payments/${id}`).json({ id, status, links });
         } catch (err) {
-            return res.status(500).json(err.message);
+            return res.status(422).json(err.message);
         }
     }
 
@@ -48,7 +48,7 @@ class PaymentController {
             const infoPayment = await db.Payments.findOne({ where: { id: +id }, attributes: { exclude: ['cvv'] } });
             return res.status(200).json(infoPayment);
         } catch (err) {
-            return res.status(500).json(err.message);
+            return res.status(404).json(err.message);
         }
     }
 
