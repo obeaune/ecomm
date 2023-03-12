@@ -16,7 +16,8 @@
         "import/no-unresolved": "off",
         "indent": ["error", 4],
         "new-cap": ["error", { "newIsCap": false }],
-        "comma-dangle": ["error", "never"]
+        "comma-dangle": ["error", "never"],
+        "no-console": 0
     }
 }
 
