@@ -3,19 +3,15 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    class Payments extends Model {
-        /**
-         * Helper method for defining associations.
-         * This method is not a part of Sequelize lifecycle.
-         * The `models/index` file will call this method automatically.
-        */
-        // eslint-disable-next-line no-unused-vars
+    class Payment extends Model {
         static associate(models) {
-            // define association here
+            // Payment.hasOne(models.Invoice, {
+            //     foreignKey: 'paymentId'
+            // });
         }
     }
 
-    Payments.init({
+    Payment.init({
         value: {
             // eslint-disable-next-line new-cap
             type: DataTypes.DECIMAL(10, 2),
@@ -53,5 +49,5 @@ module.exports = (sequelize, DataTypes) => {
         modelName: 'Payments'
     });
 
-    return Payments;
+    return Payment;
 };

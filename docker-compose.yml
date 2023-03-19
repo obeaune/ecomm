@@ -11,6 +11,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: secret
 
+  finance:
+    build: ./finance
+    container_name: ecomm-finance
+    ports:
+      - 3003:3003
+    depends_on:
+      - mysql
+
   mongodb:
     image: mongo:5.0
     container_name: mongo-ecomm
@@ -38,14 +46,6 @@ services:
       - 3002:3002
     depends_on:
       - mongodb
-
-  finance:
-    build: ./finance
-    container_name: ecomm-finance
-    ports:
-      - 3003:3003
-    depends_on:
-      - mysql
 
 volumes:
   db-mongo-ecomm:

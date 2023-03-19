@@ -1,5 +1,7 @@
 const db = require('../models/index.js');
 
+const confirmed = 'CONFIRMED';
+
 class PaymentController {
     static async getPayments(_req, res) {
         try {
@@ -56,9 +58,9 @@ class PaymentController {
         const { id } = req.params;
         const { status } = req.body;
         try {
-            if (!status) return res.status(400).json({ message: 'You need to pass the new status in the request body.' });
             await db.Payments.update({ status }, { where: { id: +id } });
-            return res.status(200).json({ message: `Status of payment -${id}- was successfully updated for -${status}-.` });
+            const updatedPayment = await db.Payments.findOne({ where: { id: +id }, attributes: { exclude: ['cvv'] } });
+            return res.status(200).send(updatedPayment);
         } catch (err) {
             return res.status(500).json(err.message);
         }

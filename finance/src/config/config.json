@@ -9,7 +9,7 @@
   "test": {
     "username": "root",
     "password": "secret",
-    "database": "ecomm_finance",
+    "database": "ecomm_test",
     "host": "mysql",
     "dialect": "mysql"
   },
