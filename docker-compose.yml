@@ -46,6 +46,12 @@ services:
       - 3003:3003
     depends_on:
       - mysql
+  
+  order:
+    build: ./order
+    container_name: ecomm-order
+    ports:
+      - 3004:3004
 
 volumes:
   db-mongo-ecomm:

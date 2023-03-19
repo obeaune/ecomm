@@ -1,0 +1,23 @@
+{
+    "env": {
+        "es2021": true,
+        "browser": true
+    },
+    "extends": "airbnb-base",
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "linebreak-style": ["error", "windows"],
+        "import/extensions": ["error", "ignorePackages"],
+        "import/no-unresolved": "off",
+        "indent": ["error", 4],
+        "new-cap": ["error", { "newIsCap": false }],
+        "comma-dangle": ["error", "never"],
+        "no-console": 0
+    }
+}
+
