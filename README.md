@@ -45,9 +45,9 @@ Maximize robustness with fast startup and graceful shutdown.
 Keep development, staging, and production as similar as possible.
 - Services used in test and production are the same, where applicable.
 
-## **XI.** Logs ⌛
+## **XI.** Logs ☑️
 Treat logs as event streams.
-- It has not yet been fully implemented.
+- Log messages are sent (without being saved in any specific file), in cases of success or error, as the application is executed.
 
 ## **XII.** Admin processes ⌛
 Run admin/management tasks as one-off processes.
@@ -75,8 +75,8 @@ Not implemented yet.
 ## **VI.** Single DB vs Differents DB's ☑️
 The project uses different databases (MongoDB and MySQL).
 
-## **VII.** Asynchronous Events‌ ☑️
-Some processes within the project are performed asynchronously (such as database calls).
+## **VII.** Asynchronous Events‌ ⌛
+It has not yet been fully implemented.
 
 ## **VIII.** Log aggregation ⌛
 Not implemented yet.
