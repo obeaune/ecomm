@@ -83,3 +83,25 @@ Not implemented yet.
 
 ## **IX.** Aggregation of metrics ⌛
 Not implemented yet.
+
+</br></br>
+
+# **Microservices Architecture**
+
+## - Standardization of stacks
+The services are independent from each other and were developed in JavaScript, with ESLint taking care of corrections and improvements in writing the code.
+
+## - Service discovery solution
+In the case of this application, which has all services containerized, service discovery is solved using `docker-compose` because through the names of the containers we can access the internal microservices.
+
+## - Security aspects
+Security at rest has been applied by encrypting user passwords before they are stored and the application security is optimized by the implemented jwt token authentication and authorization.
+
+## - Technologies to adopt for deploy and build
+Despite the application already being dockerized, which facilitates/allows build and deploy, CI/CD has not yet been applied.
+
+## - Fault tolerance in synchronous applications (circuit breaker, cache)
+Some recommended ways to deal with failures in synchronous applications (like this one) are _circuit breaker_ and _cache_, which are useful to save the server from overloads, but they have not yet been implemented.
+
+## - Asynchronous communication
+The idea for this application is to implement a messaging service (like RabbitMQ or Kafka) that helps in asynchronous communication between microservices, but this has not yet been implemented.
